@@ -21,3 +21,18 @@ model ArtPiece {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+  role     Role   @default(USER)
+  createdAt DateTime @default(now())
+}
+
+enum Role {
+  DEV
+  ADMIN
+  USER
+  GUEST
+}
