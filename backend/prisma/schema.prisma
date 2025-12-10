@@ -1,0 +1,23 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ArtPiece {
+  id           Int      @id @default(autoincrement())
+  name         String
+  images       String[] // array of image URLs
+  description  String
+  materials    String
+  size         String
+  display      String
+  availability Boolean  @default(true)
+  price        Float
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
